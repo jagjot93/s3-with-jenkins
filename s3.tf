@@ -5,7 +5,7 @@ data "aws_kms_key" "s3_key" {
 resource "aws_s3_bucket" "test" {
         bucket = "${var.bucket_name[0]}"
 
-        versioning {
+        versioning_configuration {
                 enabled = true
         }
         acl = "private"
