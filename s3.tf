@@ -55,7 +55,7 @@ resource "aws_s3_bucket_public_access_block" "example" {
                                 "Resource": "arn:aws:s3:::${var.bucket_name[0]}",
                                 "Principal": {
                                 "AWS": [
-                                        "arn:aws:iam::536530634742:user/cloud_user"
+                                        "arn:aws:iam::053969469615:user/cloud_user"
                                         ]
                                 }
                         }
