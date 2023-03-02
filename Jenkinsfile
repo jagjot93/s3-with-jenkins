@@ -14,6 +14,10 @@ node {
 
     stage('terraform_apply') {
         sh 'terraform apply --auto-approve'
+        
+        when {
+            branch 'master'
+        }
     }
     
 }
