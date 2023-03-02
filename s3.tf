@@ -2,12 +2,18 @@ data "aws_kms_key" "s3_key" {
   key_id = "alias/aws/s3"
 }
 
+
+resource "aws_s3_bucket_versioning" "versioning_example" {
+  bucket = aws_s3_bucket.test.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+
 resource "aws_s3_bucket" "test" {
         bucket = "${var.bucket_name[0]}"
 
-        versioning_configuration {
-                enabled = true
-        }
         acl = "private"
 
         tags = {
@@ -24,7 +30,7 @@ resource "aws_s3_bucket" "test" {
   }
 }
 
-        resource "aws_s3_bucket_public_access_block" "example" {
+resource "aws_s3_bucket_public_access_block" "example" {
                 bucket = aws_s3_bucket.test.id
 
                 block_public_acls   = true
